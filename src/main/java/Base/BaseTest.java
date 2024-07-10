@@ -1,5 +1,6 @@
 package Base;
 import java.lang.reflect.Method;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -8,6 +9,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import Utils.Constants;
 
 public class BaseTest {
 
@@ -48,15 +51,17 @@ public class BaseTest {
 		WebDriver webDriver = WebDriverFactory.createDriver(browser);
 		logger = extent.createTest(testMethod.getName());
 		driver.set(webDriver);
+		//driver.get(Constants.url);
+		getDriver().get(Constants.url);
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	}
 
 
-	public WebDriver getDriver() 
+	public static WebDriver getDriver() 
 	{
 		return driver.get();
 	}
-
-
 
 
 
