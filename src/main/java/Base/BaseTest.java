@@ -52,6 +52,7 @@ public class BaseTest {
 		logger = extent.createTest(testMethod.getName());
 		driver.set(webDriver);
 		//driver.get(Constants.url);
+		//driver.get().get(Constants.url);
 		getDriver().get(Constants.url);
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
