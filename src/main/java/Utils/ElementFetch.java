@@ -9,6 +9,7 @@ import Base.BaseTest;
 
 public class ElementFetch {
 	
+	
 	public WebElement getWebElement(String identifierType, String identifierValue) {
 		
 		switch(identifierType) {
