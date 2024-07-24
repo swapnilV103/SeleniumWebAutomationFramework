@@ -2,7 +2,7 @@ package Utils;
 
 public interface Constants {
 	
-	String url = "https://ui.cogmento.com/";
+	String url = "https://freecrm.com/";
 	
 
 }
