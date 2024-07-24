@@ -109,6 +109,7 @@ public class BaseTest {
 
 		// Close the report
 		extent.flush();
+		driver.quit();
 	}
 
 
