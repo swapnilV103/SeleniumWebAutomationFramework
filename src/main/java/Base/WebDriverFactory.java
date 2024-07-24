@@ -13,7 +13,7 @@ public class WebDriverFactory {
         WebDriver driver;
         switch (browser.toLowerCase()) {
             case "chrome":
-            	WebDriverManager.chromedriver().setup();
+            	//WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             case "firefox":
