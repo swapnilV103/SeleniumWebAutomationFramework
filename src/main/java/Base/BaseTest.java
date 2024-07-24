@@ -3,14 +3,22 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
+
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import Utils.Constants;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
@@ -18,7 +26,8 @@ public class BaseTest {
 	protected ExtentTest logger; //it will add/log each step of the testcase but it is different than a log
 	private ExtentSparkReporter testreporter; //to create the actual html report file
 
-	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	//private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	public static WebDriver driver;
 
 
 
@@ -45,36 +54,76 @@ public class BaseTest {
 
 	@BeforeMethod
 	@Parameters("browser")
-
-	public void beforeMethodMethod(String browser, Method testMethod)
+	public void beforeMethodMethod(@Optional("chrome") String browser, Method testMethod)
 	{
-		WebDriver webDriver = WebDriverFactory.createDriver(browser);
+		setupDriver(browser);
 		logger = extent.createTest(testMethod.getName());
-		driver.set(webDriver);
+		//webDriver.get(Constants.url);
+		//driver.set(webDriver);
 		//driver.get(Constants.url);
 		//driver.get().get(Constants.url);
-		getDriver().get(Constants.url);
-		getDriver().manage().window().maximize();
-		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.get(Constants.url);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		//getDriver().get(Constants.url);
+		//getDriver().manage().window().maximize();
+		//getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	}
 
 
-	public static WebDriver getDriver() 
-	{
-		return driver.get();
+	//public static WebDriver getDriver() 
+	//{
+	//driver = driver.get();
+	//return driver.get();
+	//}
+
+
+
+
+
+	@AfterMethod
+	public void aftertestmethod(ITestResult result) 
+	{	
+		if(result.getStatus()==ITestResult.FAILURE) {
+			logger.log(Status.FAIL, MarkupHelper.createLabel(result.getName()+"- Test Case Failed = ",ExtentColor.RED));
+			logger.log(Status.FAIL, MarkupHelper.createLabel(result.getThrowable()+"- Test Case Failed = ",ExtentColor.RED));
+		}
+		if(result.getStatus() == ITestResult.SKIP) {
+			logger.log(Status.SKIP, MarkupHelper.createLabel(result.getName()+"- Test Case Skipped = ",ExtentColor.ORANGE));
+		}
+		if(result.getStatus()==ITestResult.SUCCESS) {
+			logger.log(Status.PASS, MarkupHelper.createLabel(result.getName()+"- Test Case Passed= ",ExtentColor.GREEN));
+
+		}	
+		//extent.flush();
+		//getDriver().quit();
+		//driver.remove();
 	}
 
-
-	
 
 	@AfterTest
-	@AfterMethod
-	public void aftertestmethod() 
-	{	
-		extent.flush();
-		getDriver().quit();
-		driver.remove();
+	public void aftertestmethodone() {
+		System.out.println("All tests are completed!");
 
+		// Close the report
+		extent.flush();
 	}
+
+
+
+	public void setupDriver(String browser) {
+
+		if(browser.equalsIgnoreCase("chrome")) {
+			//WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();		
+		}
+		if(browser.equalsIgnoreCase("firefox")) {
+			//WebDriverManager.chromedriver().setup();
+			driver = new FirefoxDriver();		
+		}
+	}
+
+
+
 
 }
