@@ -10,12 +10,12 @@ public class LoginPageEvents {
 	ElementFetch ele = new ElementFetch();
 	
 	public void VerifyIfLoginPageLoaded() {
-		Assert.assertTrue(ele.getWebElements("XPATH", LoginPageElements.loginpagetext).size()>0, "Element Not Found");
+		Assert.assertTrue(ele.getWebElements("xpath", LoginPageElements.loginpagetext).size()>0, "Element Not Found");
 	}
 	
 	public void enterCredentials() {
-		ele.getWebElement("XPATH", LoginPageElements.emailAddereddField).sendKeys("rmishra@gmail.com");
-		ele.getWebElement("XPATH", LoginPageElements.passwordField).sendKeys("12345");
+		ele.getWebElement("xpath", LoginPageElements.emailAddereddField).sendKeys("rmishra@gmail.com");
+		ele.getWebElement("xpath", LoginPageElements.passwordField).sendKeys("12345");
 		
 	}
 	
