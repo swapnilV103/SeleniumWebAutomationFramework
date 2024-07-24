@@ -14,7 +14,6 @@ public class Testcase1 extends BaseTest{
 	LoginPageEvents loginPage = new LoginPageEvents();
 	
   @Test
-  
   public void Verify_if_Login_Works_Using_Correct_Credintials() {
 	  homePage.clickSignInButton();
 	  loginPage.VerifyIfLoginPageLoaded();
