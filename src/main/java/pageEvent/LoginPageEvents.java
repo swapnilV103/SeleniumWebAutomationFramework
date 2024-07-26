@@ -14,8 +14,8 @@ public class LoginPageEvents {
 	}
 	
 	public void enterCredentials() {
-		ele.getWebElement("xpath", LoginPageElements.emailAddereddField).sendKeys("rmishra@gmail.com");
-		ele.getWebElement("xpath", LoginPageElements.passwordField).sendKeys("12345");
+		ele.getWebElement("xpath", LoginPageElements.emailAddereddField).sendKeys("swapnilidawate103@gmail.com");
+		ele.getWebElement("xpath", LoginPageElements.passwordField).sendKeys("Swapnil101@");
 		
 	}
 	
