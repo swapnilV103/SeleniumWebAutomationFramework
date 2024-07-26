@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -29,6 +30,7 @@ public class BaseTest {
 
 	//private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 	public static WebDriver driver;
+	WebDriverWait wait;
 
 
 
@@ -66,7 +68,7 @@ public class BaseTest {
 		//driver.get().get(Constants.url);
 		driver.get(Constants.url);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		//getDriver().get(Constants.url);
 		//getDriver().manage().window().maximize();
 		//getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -100,6 +102,7 @@ public class BaseTest {
 		//extent.flush();
 		//getDriver().quit();
 		//driver.remove();
+		driver.quit();
 	}
 
 
@@ -109,7 +112,7 @@ public class BaseTest {
 
 		// Close the report
 		extent.flush();
-		driver.quit();
+	
 	}
 
 

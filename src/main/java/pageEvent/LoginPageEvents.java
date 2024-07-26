@@ -19,6 +19,9 @@ public class LoginPageEvents {
 		
 	}
 	
-	
+	public void clickonSignin() {
+		ele.getWebElement("xpath", LoginPageElements.signin_Button).click();
+		
+	}
 
 }
