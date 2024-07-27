@@ -1,4 +1,4 @@
-package stepdefs;
+
 
 
 import io.cucumber.java.After;
@@ -17,50 +17,70 @@ import Base.BaseTest;
 
 
 
-public class LoginPageStepDefs extends BaseTest{
+public class LoginPageStep {
+	
+	WebDriver driver;
+	LoginPageEvents loginPage = new LoginPageEvents();
+	HomePageEvents homePage = new HomePageEvents();
+	
+	BaseTest basetest;
+	
+	@Before
+	public void setup() {
+		driver = new FirefoxDriver();
+		driver.get("https://freecrm.com/");
+	}
+	
+	@After
+	public void teardown() {
+		if(driver!=null) {
+			driver.quit();
+		}
+	}
 	
 	
 	
 	@Given(value = "I am on the login page on opem CRM")
 	public void IamontheloginpageonopemCRM() {
-		System.out.println("I am on the login page on opem CRM");	}
-	
-	@Given(value = "I have Entered a valid username and password")
-	public void I_have_Entered_a_valid_username_and_password() {
-		System.out.println("I am on the login page on opem CRM");	
+		homePage.clickSignInButton();
 	}
 	
-	@Given(value="I have Entered Invalid <{string}> and <{string}>")
-	public void I_have_Entered_Invalid_and(String username, String password) {
-		System.out.println("I am on the login page on opem CRM");	
+	@Given(value = "I have Entered a valid username and password")
+	public void IhaveEnteredavalidusernameandpassword() {
+		loginPage.enterCredentials();
+	}
+	
+	@Given(value="I have Entered Invalid {string} and {string}")
+	public void I_have_Entered_Invalid_user_pwd(String username, String password) {
+		loginPage.enterInvalidCredentials(username, password);
 	}
 	
 	
 	@When(value = "I Click on the login button")
 	public void I_Click_on_the_login_button() {
-		System.out.println("I am on the login page on opem CRM");	
+		loginPage.clickonSignin();
 		
 	}
 	
 	@Then(value = "I should be logged in Successfully")
 	public void I_should_be_logged_in_Successfully() {
-		System.out.println("I am on the login page on opem CRM");	
+		Assert.assertEquals(loginPage.checklogoutLink() , true);
 	}
 	
 	
-	@Then(value = "I should see and error message <{string}>")
-	public void I_should_see_and_error_message(String string) {
-		System.out.println("I am on the login page on opem CRM");	
+	@Then(value = "I should see and error message {error_message}")
+	public void I_should_see_and_error_message() {
+		Assert.assertEquals(loginPage.isErrormessagedisplayed(), true);
 	}
 	
 	@When(value = "I click on forgotten password link")
 	public void I_click_on_forgotten_password_link() {
-		System.out.println("I am on the login page on opem CRM");	
+		loginPage.clickonforgotPassword();
 	}
 	
 	@Then(value = "I should be redirected to password reset page")
 	public void I_should_be_redirected_to_password_reset_page(){
-		System.out.println("I am on the login page on opem CRM");	
+		loginPage.getforgotPwdPageUrl();
 	}
 	
 	
