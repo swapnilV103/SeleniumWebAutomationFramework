@@ -26,6 +26,7 @@ Examples:
  Scenario: Nevigating to forgotten password page
  	When I click on forgotten password link
  	Then I should be redirected to password reset page
+ 	
  
  
  
