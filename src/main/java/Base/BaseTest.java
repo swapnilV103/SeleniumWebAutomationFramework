@@ -121,6 +121,7 @@ public class BaseTest {
 
 		if(browser.equalsIgnoreCase("chrome")) {
 			//WebDriverManager.chromedriver().setup();
+			System.out.println("Inside the chromesetup driver");
 			driver = new ChromeDriver();		
 		}
 		if(browser.equalsIgnoreCase("firefox")) {
