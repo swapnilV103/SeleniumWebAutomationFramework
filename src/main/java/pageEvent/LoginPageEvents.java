@@ -55,9 +55,16 @@ public class LoginPageEvents {
 		return ele.getWebElement("xpath", LoginPageElements.Invalid_login_error_message_text).isDisplayed();
 	}
 	
-	public String getforgotPwdPageUrl() {
+	/*public String getforgotPwdPageUrl() {
 		LoginPageEvents.this.clickonforgotPassword();
 		String url = BaseTest.driver.getCurrentUrl();
+		return url;
+		
+	}*/
+	
+	public String getforgotPwdPageUrl() {
+		LoginPageEvents.this.clickonforgotPassword();
+		String url = BaseTest.getDriver().getCurrentUrl();
 		return url;
 		
 	}
