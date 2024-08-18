@@ -15,19 +15,19 @@ public class ElementFetch {
 		switch(identifierType) {
 		
 		case "xpath":
-			return BaseTest.driver.findElement(By.xpath(identifierValue));
+			return BaseTest.getDriver().findElement(By.xpath(identifierValue));
 		
 		case "css":
-			return BaseTest.driver.findElement(By.cssSelector(identifierValue));
+			return BaseTest.getDriver().findElement(By.cssSelector(identifierValue));
 			
 		case "id":
-			return BaseTest.driver.findElement(By.id(identifierValue));
+			return BaseTest.getDriver().findElement(By.id(identifierValue));
 			
 		case "name":
-			return BaseTest.driver.findElement(By.partialLinkText(identifierValue));
+			return BaseTest.getDriver().findElement(By.partialLinkText(identifierValue));
 			
 		case "tagname":
-			return BaseTest.driver.findElement(By.tagName(identifierValue));
+			return BaseTest.getDriver().findElement(By.tagName(identifierValue));
 			
 		    default :
 		    	return null;	
@@ -41,19 +41,19 @@ public List<WebElement> getWebElements(String identifierType, String identifierV
 		switch(identifierType) {
 		
 		case "xpath":
-			return BaseTest.driver.findElements(By.xpath(identifierValue));
+			return BaseTest.getDriver().findElements(By.xpath(identifierValue));
 		
 		case "css":
-			return BaseTest.driver.findElements(By.cssSelector(identifierValue));
+			return BaseTest.getDriver().findElements(By.cssSelector(identifierValue));
 			
 		case "id":
-			return BaseTest.driver.findElements(By.id(identifierValue));
+			return BaseTest.getDriver().findElements(By.id(identifierValue));
 			
 		case "name":
-			return BaseTest.driver.findElements(By.partialLinkText(identifierValue));
+			return BaseTest.getDriver().findElements(By.partialLinkText(identifierValue));
 			
 		case "tagname":
-			return BaseTest.driver.findElements(By.tagName(identifierValue));
+			return BaseTest.getDriver().findElements(By.tagName(identifierValue));
 			
 		    default :
 		    	return null;	
