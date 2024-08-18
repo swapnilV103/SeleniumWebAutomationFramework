@@ -31,7 +31,7 @@ public class Testcase1 extends BaseTest{
 	  
 	  //wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginPageElementID")));
 	  loginPage.clickonSignin();
-	  BaseTest.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	  BaseTest.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	  
   }
 }
