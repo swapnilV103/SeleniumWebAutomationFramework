@@ -23,9 +23,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-    protected ExtentReports extent;
-    protected ExtentTest logger;
-    private ExtentSparkReporter testreporter;
+    protected ExtentReports extent; //used to initialize and configure reports
+    protected ExtentTest logger; //it will add/log each step of the testcase but it is different than a log
+    private ExtentSparkReporter testreporter; //to create the actual html report file
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private WebDriverWait wait;
