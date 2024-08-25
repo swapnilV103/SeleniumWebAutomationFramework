@@ -34,7 +34,7 @@ public class SuiteListener implements ITestListener,IAnnotationTransformer{
 			e.printStackTrace();
 		}
 		
-	}
+	} 
 	
 	public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
 		
