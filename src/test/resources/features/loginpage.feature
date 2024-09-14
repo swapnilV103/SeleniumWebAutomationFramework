@@ -28,7 +28,15 @@ Examples:
  	Then I should be redirected to password reset page
  	
  
+ Scenario: successfull job creation
+ Given: I have clicked on job create button
+ And: I enter <"job name">
+ When: I click on create job
+ Then: Job should get created
  
+ Examples:
+      |job name|
+ 			| my job |
  
  
  
