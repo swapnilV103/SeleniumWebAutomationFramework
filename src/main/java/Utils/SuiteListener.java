@@ -21,7 +21,7 @@ public class SuiteListener implements ITestListener,IAnnotationTransformer{
 	public void onTestFailure(ITestResult result) {
 		String filename = System.getProperty("user.dir")+File.separator+"screenshots"+File.separator+result.getMethod().getMethodName();
 		
-		TakesScreenshot ts = (TakesScreenshot)BaseTest.driver;//Cast to TakesScreenshot
+		TakesScreenshot ts = (TakesScreenshot)BaseTest.getDriver();//Cast to TakesScreenshot
 		File f1 = ts.getScreenshotAs(OutputType.FILE);// Get the screenshot file
 		
 		//File f1 = ((TakesScreenshot)BaseTest.driver).getScreenshotAs(OutputType.FILE);
